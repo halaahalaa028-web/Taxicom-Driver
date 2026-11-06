@@ -9,8 +9,8 @@ workflows:
       flutter: stable
       xcode: latest
       ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.taxicom.app.driver
+        provisioning_profiles:
+          - Taxicom-Driver-AppStore-2
     scripts:
       - name: Get Flutter packages
         script: flutter pub get
