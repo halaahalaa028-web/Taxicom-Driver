@@ -1,4 +1,27 @@
 workflows:
+  taxicom-driver-ios:
+    name: Taxicom Driver - iOS IPA
+    max_build_duration: 120
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Banuvra-iOS-Package
+    environment:
+      flutter: stable
+      xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.taxicom.app.driver
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Apply iOS code signing
+        script: xcode-project use-profiles
+      - name: Build signed iOS IPA
+        script: flutter build ipa --release
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
   taxicom-driver-android:
     name: Taxicom Driver - Android AAB
     max_build_duration: 60
