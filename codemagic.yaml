@@ -17,7 +17,10 @@ workflows:
       - name: Apply iOS code signing
         script: xcode-project use-profiles
       - name: Build signed iOS IPA
-        script: flutter build ipa --release
+        script: |
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/ios/Runner.xcworkspace" \
+            --scheme "Runner"
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
