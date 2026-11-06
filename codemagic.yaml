@@ -1,0 +1,16 @@
+workflows:
+  taxicom-driver-android:
+    name: Taxicom Driver - Android AAB
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      flutter: stable
+      java: 17
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build Android App Bundle
+        script: flutter build appbundle --release
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+      - build/app/outputs/mapping/release/mapping.txt
