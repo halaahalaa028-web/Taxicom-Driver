@@ -1,0 +1,87 @@
+{
+  "project_info": {
+    "project_number": "710097501103",
+    "firebase_url": "https://taxicom-4c281-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "taxicom-4c281",
+    "storage_bucket": "taxicom-4c281.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710097501103:android:7773d8145ebfbe69aa0d5a",
+        "android_client_info": {
+          "package_name": "com.Taxicom.TaxicomDriver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHSY1f51RPlr5uJ0WwKTuKo2im8B0Lh2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710097501103:android:0e5ba1940dec2173aa0d5a",
+        "android_client_info": {
+          "package_name": "com.Taxicom.TaxicomUser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHSY1f51RPlr5uJ0WwKTuKo2im8B0Lh2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710097501103:android:8ac95a87a822fb09aa0d5a",
+        "android_client_info": {
+          "package_name": "com.taxicom.app.driver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHSY1f51RPlr5uJ0WwKTuKo2im8B0Lh2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710097501103:android:59abba54dac73995aa0d5a",
+        "android_client_info": {
+          "package_name": "com.taxicom.app.user"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHSY1f51RPlr5uJ0WwKTuKo2im8B0Lh2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

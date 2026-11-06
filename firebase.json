@@ -1,0 +1,32 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "taxicom-4c281",
+                    "appId": "1:710097501103:android:7773d8145ebfbe69aa0d5a",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "taxicom-4c281",
+                    "configurations": {
+                        "android": "1:710097501103:android:7773d8145ebfbe69aa0d5a",
+                        "ios": "1:710097501103:ios:bb55a49ff00cbf46aa0d5a"
+                    }
+                }
+            }
+        }
+    },
+    "database": {
+        "rules": "../Taxicom User App/database.rules.json"
+    },
+    "firestore": {
+        "rules": "../Taxicom User App/firestore.rules",
+        "indexes": "../Taxicom User App/firestore.indexes.json"
+    },
+    "storage": {
+        "rules": "../Taxicom User App/storage.rules"
+    }
+}

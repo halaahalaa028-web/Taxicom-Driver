@@ -1,0 +1,11 @@
+# Android Release Signing Configuration Template
+# ----------------------------------------------------
+# Instructions:
+# 1. Place your release keystore (.jks) file in 'android/app/'
+# 2. Copy or rename this file to 'key.properties' in this directory ('android/key.properties')
+# 3. Fill in your actual keystore credentials below:
+
+storePassword=YOUR_KEYSTORE_PASSWORD
+keyPassword=YOUR_KEY_PASSWORD
+keyAlias=YOUR_KEY_ALIAS
+storeFile=app/your_release_keystore.jks
