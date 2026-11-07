@@ -34,6 +34,9 @@ workflows:
           echo "===== POD LOCK ENTRIES ====="
           grep -n -A 5 -B 1 -i -E "audioplayers|record|firebase|permission_handler" Podfile.lock || true
           echo "Diagnostics complete. Flutter may manage some iOS plugins through Swift Package Manager rather than CocoaPods."
+      - name: Prepare Flutter iOS Swift Package Manager integration
+        script: |
+          flutter build ios --release --no-codesign
       - name: Apply iOS code signing
         script: xcode-project use-profiles
       - name: Build signed iOS IPA
