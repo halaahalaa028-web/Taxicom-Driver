@@ -21,8 +21,20 @@ workflows:
         script: |
           cd ios
           pod install --clean-install
+          echo "===== FLUTTER PLUGIN METADATA ====="
+          if [ -f "../.flutter-plugins-dependencies" ]; then
+            grep -o '"name":"[^"]*"' ../.flutter-plugins-dependencies | sort -u
+            echo "===== AUDIO / RECORD PLUGIN ENTRIES ====="
+            grep -n -i -E "audioplayers|record" ../.flutter-plugins-dependencies || true
+          else
+            echo "ERROR: .flutter-plugins-dependencies was not generated"
+          fi
+          echo "===== POD TARGETS ====="
+          grep -n -i -E "audioplayers|record|firebase|permission_handler" Pods/Pods.xcodeproj/project.pbxproj | head -100 || true
+          echo "===== POD LOCK ENTRIES ====="
+          grep -n -A 5 -B 1 -i -E "audioplayers|record|firebase|permission_handler" Podfile.lock || true
           if ! grep -q "audioplayers_darwin" "Pods/Pods.xcodeproj/project.pbxproj"; then
-            echo "ERROR: audioplayers_darwin was not integrated into the CocoaPods project"
+            echo "ERROR: audioplayers_darwin is missing; see plugin metadata and pod diagnostics above"
             exit 1
           fi
           echo "Verified: audioplayers_darwin is integrated into CocoaPods"
