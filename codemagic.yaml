@@ -22,9 +22,14 @@ workflows:
         script: xcode-project use-profiles
       - name: Build signed iOS IPA
         script: |
-          xcode-project build-ipa \
+          if ! xcode-project build-ipa \
             --workspace "$CM_BUILD_DIR/ios/Runner.xcworkspace" \
-            --scheme "Runner"
+            --scheme "Runner"; then
+            echo "===== XCODE ERROR DETAILS ====="
+            find /tmp/xcodebuild_logs -type f -name '*.log' -maxdepth 2 -print 2>/dev/null || true
+            grep -n -B 8 -A 12 -E 'error:|fatal error:|BUILD FAILED|Error Domain=' /tmp/xcodebuild_logs/*.log 2>/dev/null || true
+            exit 1
+          fi
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
