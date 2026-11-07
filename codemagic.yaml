@@ -12,12 +12,20 @@ workflows:
         provisioning_profiles:
           - Taxicom-Driver-AppStore-2
     scripts:
-      - name: Get Flutter packages
-        script: flutter pub get
-      - name: Install iOS CocoaPods
+      - name: Clean and get Flutter packages
+        script: |
+          flutter clean
+          rm -rf ios/Pods ios/.symlinks ios/Flutter/ephemeral
+          flutter pub get
+      - name: Install and verify iOS CocoaPods
         script: |
           cd ios
-          pod install
+          pod install --clean-install
+          if ! grep -q "audioplayers_darwin" "Pods/Pods.xcodeproj/project.pbxproj"; then
+            echo "ERROR: audioplayers_darwin was not integrated into the CocoaPods project"
+            exit 1
+          fi
+          echo "Verified: audioplayers_darwin is integrated into CocoaPods"
       - name: Apply iOS code signing
         script: xcode-project use-profiles
       - name: Build signed iOS IPA
