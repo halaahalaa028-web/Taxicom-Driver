@@ -10,7 +10,7 @@ workflows:
       xcode: latest
       ios_signing:
         provisioning_profiles:
-          - Taxicom-Driver-AppStore-2
+          - Taxicom Driver New
     scripts:
       - name: Clean and get Flutter packages
         script: |
