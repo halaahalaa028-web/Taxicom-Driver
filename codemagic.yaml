@@ -47,38 +47,7 @@ workflows:
             exit 1
           fi
           sed -i '' 's/^FLUTTER_BUILD_NUMBER=.*/FLUTTER_BUILD_NUMBER=8/' ios/Flutter/Generated.xcconfig
-          if ! grep -q '^FLUTTER_BUILD_NUMBER=8            --workspace "$CM_BUILD_DIR/ios/Runner.xcworkspace" \
-            --scheme "Runner"; then
-            echo "===== XCODE ERROR DETAILS ====="
-            find /tmp/xcodebuild_logs -type f -name '*.log' -maxdepth 2 -print 2>/dev/null || true
-            grep -n -B 8 -A 12 -E 'error:|fatal error:|BUILD FAILED|Error Domain=' /tmp/xcodebuild_logs/*.log 2>/dev/null || true
-            exit 1
-          fi
-    artifacts:
-      - build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
-    publishing:
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
-        submit_to_app_store: false
-
-  taxicom-driver-android:
-    name: Taxicom Driver - Android AAB
-    max_build_duration: 60
-    instance_type: linux_x2
-    environment:
-      flutter: stable
-      java: 17
-    scripts:
-      - name: Get Flutter packages
-        script: flutter pub get
-      - name: Build Android App Bundle
-        script: flutter build appbundle --release
-    artifacts:
-      - build/app/outputs/bundle/release/*.aab
-      - build/app/outputs/mapping/release/mapping.txt
- ios/Flutter/Generated.xcconfig; then
+          if ! grep -q '^FLUTTER_BUILD_NUMBER=8$' ios/Flutter/Generated.xcconfig; then
             echo "ERROR: Could not set FLUTTER_BUILD_NUMBER=8"
             exit 1
           fi
