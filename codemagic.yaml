@@ -36,7 +36,7 @@ workflows:
           echo "Diagnostics complete. Flutter may manage some iOS plugins through Swift Package Manager rather than CocoaPods."
       - name: Prepare Flutter iOS Swift Package Manager integration
         script: |
-          flutter build ios --release --no-codesign
+          flutter build ios --release --no-codesign --build-number=8
       - name: Apply iOS code signing
         script: xcode-project use-profiles
       - name: Build signed iOS IPA
